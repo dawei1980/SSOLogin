@@ -9,7 +9,7 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "role")
+@Table(name = "sys_role")
 public class SysRole {
 
     @Id

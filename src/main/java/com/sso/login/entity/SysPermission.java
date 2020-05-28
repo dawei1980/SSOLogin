@@ -3,7 +3,7 @@ package com.sso.login.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "permission")
+@Table(name = "sys_permission")
 public class SysPermission {
 
     @Id
