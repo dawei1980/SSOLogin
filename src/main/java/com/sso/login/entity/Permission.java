@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "permission")
-public class SysPermission {
+public class Permission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

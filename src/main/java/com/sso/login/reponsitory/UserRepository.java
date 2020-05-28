@@ -1,7 +1,7 @@
 package com.sso.login.reponsitory;
 
 
-import com.sso.login.entity.SysUser;
+import com.sso.login.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
@@ -12,8 +12,8 @@ import javax.transaction.Transactional;
  * @Version 1.0
  */
 @Transactional
-public interface UserRepository extends JpaRepository<SysUser, Integer> {
-    SysUser findByUsername(String username);
+public interface UserRepository extends JpaRepository<User, Integer> {
+    User findByUsername(String username);
 
-    SysUser findByUserId(Integer userId);
+    User findByUserId(Integer userId);
 }

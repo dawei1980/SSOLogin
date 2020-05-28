@@ -2,7 +2,7 @@ package com.sso.login.service.impl;
 
 import com.sso.login.auth.TokenGenerator;
 import com.sso.login.entity.SysToken;
-import com.sso.login.entity.SysUser;
+import com.sso.login.entity.User;
 import com.sso.login.reponsitory.SysTokenRepository;
 import com.sso.login.reponsitory.UserRepository;
 import com.sso.login.service.ShiroService;
@@ -12,10 +12,16 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @Author 大誌
+ * @Date 2019/3/30 22:18
+ * @Version 1.0
+ */
 @Service
 public class ShiroServiceImpl implements ShiroService {
     //12小时后失效
     private final static int EXPIRE = 12;
+
 
     private final UserRepository userRepository;
     private final SysTokenRepository sysTokenRepository;
@@ -32,9 +38,9 @@ public class ShiroServiceImpl implements ShiroService {
      * @return User
      */
     @Override
-    public SysUser findByUsername(String username) {
-        SysUser sysUser = userRepository.findByUsername(username);
-        return sysUser;
+    public User findByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+        return user;
     }
 
 
@@ -97,7 +103,7 @@ public class ShiroServiceImpl implements ShiroService {
     }
 
     @Override
-    public SysUser findByUserId(Integer userId) {
+    public User findByUserId(Integer userId) {
         return userRepository.findByUserId(userId);
     }
 }

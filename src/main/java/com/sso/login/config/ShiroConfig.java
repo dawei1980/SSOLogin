@@ -15,6 +15,12 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * ShiroConfig配置
+ * @Author 大誌
+ * @Date 2019/3/30 21:50
+ * @Version 1.0
+ */
 @Configuration
 public class ShiroConfig {
 

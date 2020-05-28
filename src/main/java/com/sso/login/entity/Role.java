@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "role")
-public class SysRole {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -21,7 +21,7 @@ public class SysRole {
 
     @ManyToMany
     @JoinTable(name = "role_permission", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = {@JoinColumn(name = "permission_id") })
-    private Set<SysPermission> sysPermissions = new HashSet<>();
+    private Set<Permission> sysPermissions = new HashSet<>();
 
     public long getRoleId() {
         return roleId;
@@ -39,11 +39,11 @@ public class SysRole {
         this.roleName = roleName;
     }
 
-    public Set<SysPermission> getSysPermissions() {
+    public Set<Permission> getSysPermissions() {
         return sysPermissions;
     }
 
-    public void setSysPermissions(Set<SysPermission> sysPermissions) {
+    public void setSysPermissions(Set<Permission> sysPermissions) {
         this.sysPermissions = sysPermissions;
     }
 }

@@ -1,9 +1,9 @@
 package com.sso.login.auth;
 
-import com.sso.login.entity.SysPermission;
-import com.sso.login.entity.SysRole;
+import com.sso.login.entity.Permission;
+import com.sso.login.entity.Role;
 import com.sso.login.entity.SysToken;
-import com.sso.login.entity.SysUser;
+import com.sso.login.entity.User;
 import com.sso.login.service.ShiroService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -17,6 +17,9 @@ import java.time.LocalDateTime;
 
 /**
  * Shiro自定义Realm
+ * @Author 大誌
+ * @Date 2019/3/30 21:38
+ * @Version 1.0
  */
 @Component
 public class AuthRealm extends AuthorizingRealm {
@@ -32,16 +35,16 @@ public class AuthRealm extends AuthorizingRealm {
      */
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         //1. 从 PrincipalCollection 中来获取登录用户的信息
-        SysUser sysUser = (SysUser) principals.getPrimaryPrincipal();
+        User user = (User) principals.getPrimaryPrincipal();
         //Integer userId = user.getUserId();
         //2.添加角色和权限
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-        for (SysRole sysRole : sysUser.getSysRoles()) {
+        for (Role role : user.getSysRoles()) {
             //2.1添加角色
-            simpleAuthorizationInfo.addRole(sysRole.getRoleName());
-            for (SysPermission sysPermission : sysRole.getSysPermissions()) {
+            simpleAuthorizationInfo.addRole(role.getRoleName());
+            for (Permission permission : role.getSysPermissions()) {
                 //2.1.1添加权限
-                simpleAuthorizationInfo.addStringPermission(sysPermission.getPermission());
+                simpleAuthorizationInfo.addStringPermission(permission.getPermission());
             }
         }
         return simpleAuthorizationInfo;
@@ -63,13 +66,13 @@ public class AuthRealm extends AuthorizingRealm {
             throw new IncorrectCredentialsException("token失效，请重新登录");
         }
         //3. 调用数据库的方法, 从数据库中查询 username 对应的用户记录
-        SysUser sysUser = shiroService.findByUserId(tokenEntity.getUserId());
+        User user = shiroService.findByUserId(tokenEntity.getUserId());
         //4. 若用户不存在, 则可以抛出 UnknownAccountException 异常
-        if (sysUser == null) {
+        if (user == null) {
             throw new UnknownAccountException("用户不存在!");
         }
         //5. 根据用户的情况, 来构建 AuthenticationInfo 对象并返回. 通常使用的实现类为: SimpleAuthenticationInfo
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(sysUser, accessToken, this.getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, accessToken, this.getName());
         return info;
     }
 }
