@@ -1,6 +1,6 @@
 package com.sso.login.reponsitory;
 
-import com.sso.login.entity.Role;
+import com.sso.login.entity.SysRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
@@ -11,5 +11,5 @@ import javax.transaction.Transactional;
  * @Version 1.0
  */
 @Transactional
-public interface RoleRepository extends JpaRepository<Role, Integer> {
+public interface RoleRepository extends JpaRepository<SysRole, Integer> {
 }

@@ -2,7 +2,7 @@ package com.sso.login.service.impl;
 
 import com.sso.login.auth.TokenGenerator;
 import com.sso.login.entity.SysToken;
-import com.sso.login.entity.User;
+import com.sso.login.entity.SysUser;
 import com.sso.login.reponsitory.SysTokenRepository;
 import com.sso.login.reponsitory.UserRepository;
 import com.sso.login.service.ShiroService;
@@ -38,9 +38,9 @@ public class ShiroServiceImpl implements ShiroService {
      * @return User
      */
     @Override
-    public User findByUsername(String username) {
-        User user = userRepository.findByUsername(username);
-        return user;
+    public SysUser findByUsername(String username) {
+        SysUser sysUser = userRepository.findByUsername(username);
+        return sysUser;
     }
 
 
@@ -103,7 +103,7 @@ public class ShiroServiceImpl implements ShiroService {
     }
 
     @Override
-    public User findByUserId(Integer userId) {
+    public SysUser findByUserId(Integer userId) {
         return userRepository.findByUserId(userId);
     }
 }

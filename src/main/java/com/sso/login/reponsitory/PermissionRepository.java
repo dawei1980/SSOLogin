@@ -1,6 +1,6 @@
 package com.sso.login.reponsitory;
 
-import com.sso.login.entity.Permission;
+import com.sso.login.entity.SysPermission;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
@@ -11,5 +11,5 @@ import javax.transaction.Transactional;
  * @Version 1.0
  */
 @Transactional
-public interface PermissionRepository extends JpaRepository<Permission, Integer> {
+public interface PermissionRepository extends JpaRepository<SysPermission, Integer> {
 }

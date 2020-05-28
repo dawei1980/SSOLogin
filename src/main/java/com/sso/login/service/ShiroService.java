@@ -1,7 +1,7 @@
 package com.sso.login.service;
 
 import com.sso.login.entity.SysToken;
-import com.sso.login.entity.User;
+import com.sso.login.entity.SysUser;
 
 import java.util.Map;
 
@@ -16,7 +16,7 @@ public interface ShiroService {
       * @param username
       * @return
       */
-     User findByUsername(String username);
+     SysUser findByUsername(String username);
 
      /**
       * create token by userId
@@ -43,5 +43,5 @@ public interface ShiroService {
       * @param userId
       * @return
       */
-     User findByUserId(Integer userId);
+     SysUser findByUserId(Integer userId);
 }

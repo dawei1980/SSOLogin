@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class SysUser implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -20,7 +20,7 @@ public class User implements Serializable {
 
     @ManyToMany(fetch= FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {@JoinColumn(name = "role_id") })
-    private Set<Role> sysRoles = new HashSet<>();
+    private Set<SysRole> sysRoles = new HashSet<>();
 
     public Integer getUserId() {
         return userId;
@@ -46,11 +46,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Set<Role> getSysRoles() {
+    public Set<SysRole> getSysRoles() {
         return sysRoles;
     }
 
-    public void setSysRoles(Set<Role> sysRoles) {
+    public void setSysRoles(Set<SysRole> sysRoles) {
         this.sysRoles = sysRoles;
     }
 

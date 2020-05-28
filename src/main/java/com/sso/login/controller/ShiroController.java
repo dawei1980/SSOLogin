@@ -1,7 +1,7 @@
 package com.sso.login.controller;
 
 import com.sso.login.dto.LoginDTO;
-import com.sso.login.entity.User;
+import com.sso.login.entity.SysUser;
 import com.sso.login.service.ShiroService;
 import com.sso.login.utils.TokenUtil;
 import io.swagger.annotations.ApiOperation;
@@ -41,14 +41,14 @@ public class ShiroController {
         String password = loginDTO.getPassword();
 
         //用户信息
-        User user = shiroService.findByUsername(username);
+        SysUser sysUser = shiroService.findByUsername(username);
         //账号不存在、密码错误
-        if (user == null || !user.getPassword().equals(password)) {
+        if (sysUser == null || !sysUser.getPassword().equals(password)) {
             result.put("status", 400);
             result.put("msg", "账号或密码有误");
         } else {
             //生成token，并保存到数据库
-            result = shiroService.createToken(user.getUserId());
+            result = shiroService.createToken(sysUser.getUserId());
             result.put("status", 200);
             result.put("msg", "登陆成功");
         }
