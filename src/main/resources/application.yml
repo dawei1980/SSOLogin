@@ -78,6 +78,4 @@ spring:
       max-file-size: 2000MB
       max-request-size: 2500MB
 
-swagger:
-  enabled: true
 
