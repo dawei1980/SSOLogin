@@ -4,6 +4,7 @@ import com.sso.login.dto.LoginDTO;
 import com.sso.login.entity.SysUser;
 import com.sso.login.service.ShiroService;
 import com.sso.login.utils.TokenUtil;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,7 @@ public class ShiroController {
     /**
      * 登录
      */
+    @ApiOperation(value = "登陆", notes = "参数:用户名 密码")
     @PostMapping("/sys/login")
     public Map<String, Object> login(@RequestBody LoginDTO loginDTO) {
 
@@ -56,6 +58,7 @@ public class ShiroController {
     /**
      * 退出
      */
+    @ApiOperation(value = "登出", notes = "参数:token")
     @PostMapping("/sys/logout")
     public Map<String, Object> logout(String token , HttpServletRequest httpServletRequest) {
         Map<String, Object> result = new HashMap<>();

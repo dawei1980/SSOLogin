@@ -23,6 +23,10 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.3.0.RELEASE'
     implementation group: 'org.apache.shiro', name: 'shiro-spring', version: '1.5.3'
     implementation group: 'com.spring4all', name: 'swagger-spring-boot-starter', version: '1.9.1.RELEASE'
+    //swagger生成接口API
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    //接口API生成html文档
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.68'
     implementation group: 'org.apache.commons', name: 'commons-pool2', version: '2.8.0'
     implementation group: 'commons-lang', name: 'commons-lang', version: '2.6'
