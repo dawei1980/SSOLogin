@@ -13,12 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- * @Author 大誌
- * @Date 2019/3/30 22:04
- * @Version 1.0
- */
 @RestController
 public class ShiroController {
 
